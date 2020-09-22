@@ -46,9 +46,14 @@ public class Client {
 
     private void reader() {
         String message = "";
+        try {
+            bufferedReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        } catch (IOException e) {
+            System.out.println("<CLIENT> Connection to server interrupted");
+            exit(0);
+        }
         while (true) {
             try {
-                bufferedReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 message = bufferedReader.readLine();
             } catch (IOException e) {
                 System.out.println("<CLIENT> Connection to server interrupted");
@@ -60,7 +65,6 @@ public class Client {
                 System.out.println("<CLIENT> Connection to server interrupted");
                 exit(1);
             }
-
             if (message.equals("<SERVER> Auf Wiedersehen")) {
                 System.out.println("<CLIENT> Terminating client");
                 System.exit(1);

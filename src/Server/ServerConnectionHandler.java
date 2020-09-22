@@ -51,6 +51,13 @@ public class ServerConnectionHandler implements Runnable {
                     String[] split = message.split(" ");
                     messenger(split[1] + split[2] + split[3] + "=" + Service.calc(Double.valueOf(split[1]), split[2], Double.valueOf(split[3])), false, true);
                 }
+                if (message.toLowerCase().split(" ")[0].equals("bin")) {
+                    String[] split = message.split(" ");
+                    messenger(Service.toBinary(Integer.parseInt(split[1])), false, true);
+                }
+                if (message.toLowerCase().equals("help")) {
+                    messenger(Service.man, false, true);
+                }
                 messenger(message, false, false);
             } catch (IOException e) {
                 System.out.println("<SERVER> " + username + " has closed the connection!");
