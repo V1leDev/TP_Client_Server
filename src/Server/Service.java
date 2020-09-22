@@ -1,7 +1,6 @@
 package Server;
 
 public class Service {
-    public static String s = System.lineSeparator();
     public static String man =
             "------Services manual page------\n\n" +
                     "1. calc\n" +
