@@ -56,23 +56,16 @@ class ServiceTest {
     }
 
     @org.junit.jupiter.api.Test
-    void toBinaryTest() {
-        for (int i = 0; i < 100000000; i++) {
-            assertEquals(Integer.toBinaryString(i), Service.toBinary(i));
+    void convertNumberSystemDecBinaryTest() {
+        for (int i = 0; i < 100000; i++) {
+            assertEquals(Integer.toBinaryString(i), Service.convertNumberSystem(i, 10, 2));
         }
     }
 
     @org.junit.jupiter.api.Test
-    void toHexTest() {
-        for (int i = 0; i < 100000000; i++) {
-            assertEquals(Integer.toHexString(i), Service.toHex(i));
-        }
-    }
-
-    @org.junit.jupiter.api.Test
-    void toOctTest() {
-        for (int i = 0; i < 100000000; i++) {
-            assertEquals(Integer.toOctalString(i), Service.toOct(i));
+    void convertNumberSystemBinaryHexTest() {
+        for (int i = 0; i < 1000; i++) {
+            assertEquals(Integer.toHexString(i), Service.convertNumberSystem(Integer.parseInt(Integer.toBinaryString(i)), 2, 16));
         }
     }
 }
