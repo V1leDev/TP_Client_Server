@@ -55,6 +55,14 @@ public class ServerConnectionHandler implements Runnable {
                     String[] split = message.split(" ");
                     messenger(Service.toBinary(Integer.parseInt(split[1])), false, true);
                 }
+                if (message.toLowerCase().split(" ")[0].equals("oct")) {
+                    String[] split = message.split(" ");
+                    messenger(Service.toOct(Integer.parseInt(split[1])), false, true);
+                }
+                if (message.toLowerCase().split(" ")[0].equals("hex")) {
+                    String[] split = message.split(" ");
+                    messenger(Service.toHex(Integer.parseInt(split[1])), false, true);
+                }
                 if (message.toLowerCase().equals("help")) {
                     messenger(Service.man, false, true);
                 }
