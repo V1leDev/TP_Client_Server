@@ -1,4 +1,4 @@
-package Main.Services;
+package Services;
 
 public class Service {
     public static String man =

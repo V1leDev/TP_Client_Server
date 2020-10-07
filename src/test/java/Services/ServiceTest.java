@@ -1,7 +1,5 @@
-package Test.Services;
+package Services;
 
-import Main.Services.Service;
-import org.junit.jupiter.api.Assertions;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,7 +13,7 @@ class ServiceTest {
         for (int i = 0; i < 10000000; i++) {
             first = (Math.random() * ((max - min) + 1)) + min;
             second = (Math.random() * ((max - min) + 1)) + min;
-            Assertions.assertEquals(first + second, Service.calc(first, "+", second));
+            assertEquals(first + second, Service.calc(first, "+", second));
         }
     }
 

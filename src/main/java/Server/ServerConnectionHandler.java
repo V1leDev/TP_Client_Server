@@ -1,6 +1,6 @@
-package Main.Server;
+package Server;
 
-import Main.Services.Service;
+import Services.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
