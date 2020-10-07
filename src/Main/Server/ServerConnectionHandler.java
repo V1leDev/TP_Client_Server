@@ -1,4 +1,6 @@
-package Server;
+package Main.Server;
+
+import Main.Services.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -97,7 +99,7 @@ public class ServerConnectionHandler implements Runnable {
                                     printWriter.println("<SERVER> " + username + " has closed the connection!");
                                 }
                             } catch (IOException e) {
-                                out.println("<SERVER> Client has closed the connection");
+                                out.println("<SERVER> Main.Test.Client.Server.Test.Client.Server.Test.Client has closed the connection");
                                 Server.socketArrayList.remove(socket);
                             }
                         }

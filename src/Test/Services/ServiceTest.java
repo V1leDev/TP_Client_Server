@@ -1,6 +1,6 @@
-package Tests;
+package Test.Services;
 
-import Server.Service;
+import Main.Services.Service;
 import org.junit.jupiter.api.Assertions;
 
 import static org.junit.jupiter.api.Assertions.*;

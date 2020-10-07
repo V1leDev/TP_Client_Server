@@ -1,8 +1,8 @@
-package Server;
+package Main.Services;
 
 public class Service {
     public static String man =
-            "------Services manual page------\n\n" +
+            "------Test.Services manual page------\n\n" +
                     "1. calc\n" +
                     "Syntax: calc FIRST_VALUE OPERATOR SECOND_VALUE\n" +
                     "Example: calc 256 * 19\n\n" +
