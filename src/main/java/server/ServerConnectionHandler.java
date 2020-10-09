@@ -1,6 +1,7 @@
 package server;
 
-import Services.Service;
+
+import services.Services;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -51,16 +52,16 @@ public class ServerConnectionHandler implements Runnable {
                 }
                 String m = username + ": " + message;
                 logger.info(m);
-                if (message.toLowerCase().split(" ")[0].equals("calc")) {
+                if (message.toLowerCase().split(" ")[0].equals("calc") && checkFormatCalc(message.toLowerCase().split(" "))) {
                     String[] split = message.split(" ");
-                    messenger(split[1] + split[2] + split[3] + "=" + Service.calc(Double.valueOf(split[1]), split[2], Double.valueOf(split[3])), false, true);
+                    messenger(split[1] + split[2] + split[3] + "=" + Services.calc(Double.valueOf(split[1]), split[2], Double.valueOf(split[3])), false, true);
                 }
-                if (message.toLowerCase().split(" ")[0].equals("convert")) {
+                if (message.toLowerCase().split(" ")[0].equals("convert") && checkFormatConvert(message.toLowerCase().split(" "))) {
                     String[] split = message.split(" ");
-                    messenger(Service.convertNumberSystem(Integer.parseInt(split[1]), Integer.parseInt(split[2]), Integer.parseInt(split[3])), false, true);
+                    messenger(Services.convertNumberSystem(split[1], Integer.parseInt(split[2]), Integer.parseInt(split[3])), false, true);
                 }
                 if (message.equalsIgnoreCase("help")) {
-                    messenger(Service.man, false, true);
+                    messenger(Services.MAN, false, true);
                 }
                 messenger(message, false, false);
             } catch (IOException e) {
@@ -68,6 +69,28 @@ public class ServerConnectionHandler implements Runnable {
                 messenger(SERVER + BYE, true, false);
                 return;
             }
+        }
+    }
+
+
+    private boolean checkFormatCalc(String[] split) {
+        try {
+            Double.valueOf(split[1]);
+            Double.valueOf(split[3]);
+            return true;
+        } catch (NumberFormatException exception) {
+            messenger("Input has wrong format!", false, true);
+            return false;
+        }
+    }
+
+    private boolean checkFormatConvert(String[] split){
+        try {
+            Integer.parseInt(split[1], Integer.parseInt(split[2]));
+            return true;
+        }catch (NumberFormatException exception){
+            messenger("Input has wrong format!", false, true);
+            return false;
         }
     }
 
