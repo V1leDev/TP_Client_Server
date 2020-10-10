@@ -1,10 +1,13 @@
 package services;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ServicesTest {
 
-    @org.junit.jupiter.api.Test
+    // Normal Test
+    @Test
     void calcPlusNormalInputTest() {
         // Case both numbers positive
         assertEquals(15, Double.parseDouble(Services.calc(5, "+", 10)));
@@ -16,7 +19,8 @@ class ServicesTest {
         assertEquals(-15, Double.parseDouble(Services.calc(-5, "+", -10)));
     }
 
-    @org.junit.jupiter.api.Test
+    // Normal Test
+    @Test
     void calcMinusNormalInputTest() {
         // Case both numbers positive
         assertEquals(200, Double.parseDouble(Services.calc(350, "-", 150)));
@@ -28,7 +32,8 @@ class ServicesTest {
         assertEquals(-200, Double.parseDouble(Services.calc(-350, "-", -150)));
     }
 
-    @org.junit.jupiter.api.Test
+    // Normal Test
+    @Test
     void calcMulNormalInputTest() {
         // Case both numbers positive
         assertEquals(100, Double.parseDouble(Services.calc(25, "*", 4)));
@@ -40,7 +45,8 @@ class ServicesTest {
         assertEquals(100, Double.parseDouble(Services.calc(-25, "*", -4)));
     }
 
-    @org.junit.jupiter.api.Test
+    // Normal Test
+    @Test
     void calcDivNormalInputTest() {
         // Case both numbers positive
         assertEquals(500, Double.parseDouble(Services.calc(2000, "/", 4)));
@@ -52,24 +58,40 @@ class ServicesTest {
         assertEquals(500, Double.parseDouble(Services.calc(-2000, "/", -4)));
     }
 
-    @org.junit.jupiter.api.Test
+    // Wrong input test
+    @Test
     void calcDivisionByZeroTest() {
         assertEquals("Division by zero!", Services.calc(5, "/", 0));
     }
 
-    @org.junit.jupiter.api.Test
+    // Edge case test
+    @Test
+    void calcZeroDividedByNumberTest(){
+        assertEquals(0, Double.parseDouble(Services.calc(0, "/", 100)));
+    }
+
+    // Edge case test
+    @Test
+    void calcPiDividedByETest(){
+        assertEquals(Math.PI / Math.E, Double.parseDouble(Services.calc(Math.PI, "/", Math.E)));
+    }
+
+    // Wrong input test
+    @Test
     void calcWrongFormatTest() {
         assertEquals("Input has wrong format!", Services.calc(6, "wrong_format", 12));
     }
 
-    @org.junit.jupiter.api.Test
+    // Normal test
+    @Test
     void convertNumberSystemDecBinaryTest() {
         for (int i = 0; i < 100000; i++) {
             assertEquals(Integer.toBinaryString(i), Services.convertNumberSystem(String.valueOf(i), 10, 2));
         }
     }
 
-    @org.junit.jupiter.api.Test
+    // Normal test
+    @Test
     void convertNumberSystemBinaryHexTest() {
         for (int i = 0; i < 1000; i++) {
             assertEquals(Integer.toHexString(i), Services.convertNumberSystem(Integer.toBinaryString(i), 2, 16));
