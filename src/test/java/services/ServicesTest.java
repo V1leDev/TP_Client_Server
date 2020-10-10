@@ -5,65 +5,61 @@ import static org.junit.jupiter.api.Assertions.*;
 class ServicesTest {
 
     @org.junit.jupiter.api.Test
-    void calcPlusTest() {
-        double first, second;
-        double max = 100000;
-        double min = -100000;
-        for (int i = 0; i < 100000; i++) {
-            first = (Math.random() * ((max - min) + 1)) + min;
-            second = (Math.random() * ((max - min) + 1)) + min;
-            assertEquals(first + second, Double.parseDouble(Services.calc(first, "+", second)));
-        }
+    void calcPlusNormalInputTest() {
+        // Case both numbers positive
+        assertEquals(15, Double.parseDouble(Services.calc(5, "+", 10)));
+        // Case first number negative and second number positive
+        assertEquals(5, Double.parseDouble(Services.calc(-5, "+", 10)));
+        // Case second number negative and first number positive
+        assertEquals(-5, Double.parseDouble(Services.calc(5, "+", -10)));
+        // Case both numbers negative
+        assertEquals(-15, Double.parseDouble(Services.calc(-5, "+", -10)));
     }
 
     @org.junit.jupiter.api.Test
-    void calcDivTestDivisionByZero() {
-        int first = 5;
-        int second = 0;
-        assertEquals("Division by zero!", Services.calc(first, "/", second));
+    void calcMinusNormalInputTest() {
+        // Case both numbers positive
+        assertEquals(200, Double.parseDouble(Services.calc(350, "-", 150)));
+        // Case first number negative and second number positive
+        assertEquals(-500, Double.parseDouble(Services.calc(-350, "-", 150)));
+        // Case second number negative and first number positive
+        assertEquals(500, Double.parseDouble(Services.calc(350, "-", -150)));
+        // Case both numbers negative
+        assertEquals(-200, Double.parseDouble(Services.calc(-350, "-", -150)));
     }
 
     @org.junit.jupiter.api.Test
-    void calcTestWrongFormat() {
-        int first = 6;
-        int second = 12;
-        assertEquals("Input has wrong format!", Services.calc(first, "wrong_format", second));
+    void calcMulNormalInputTest() {
+        // Case both numbers positive
+        assertEquals(100, Double.parseDouble(Services.calc(25, "*", 4)));
+        // Case first number negative and second number positive
+        assertEquals(-100, Double.parseDouble(Services.calc(-25, "*", 4)));
+        // Case second number negative and first number positive
+        assertEquals(-100, Double.parseDouble(Services.calc(25, "*", -4)));
+        // Case both numbers negative
+        assertEquals(100, Double.parseDouble(Services.calc(-25, "*", -4)));
     }
 
     @org.junit.jupiter.api.Test
-    void calcMinusTest() {
-        double first, second;
-        double max = 100000;
-        double min = -100000;
-        for (int i = 0; i < 100000; i++) {
-            first = (Math.random() * ((max - min) + 1)) + min;
-            second = (Math.random() * ((max - min) + 1)) + min;
-            assertEquals(first - second, Double.parseDouble(Services.calc(first, "-", second)));
-        }
+    void calcDivNormalInputTest() {
+        // Case both numbers positive
+        assertEquals(500, Double.parseDouble(Services.calc(2000, "/", 4)));
+        // Case first number negative and second number positive
+        assertEquals(-500, Double.parseDouble(Services.calc(-2000, "/", 4)));
+        // Case second number negative and first number positive
+        assertEquals(-500, Double.parseDouble(Services.calc(2000, "/", -4)));
+        // Case both numbers negative
+        assertEquals(500, Double.parseDouble(Services.calc(-2000, "/", -4)));
     }
 
     @org.junit.jupiter.api.Test
-    void calcMulTest() {
-        double first, second;
-        double max = 100000;
-        double min = -100000;
-        for (int i = 0; i < 100000; i++) {
-            first = (Math.random() * ((max - min) + 1)) + min;
-            second = (Math.random() * ((max - min) + 1)) + min;
-            assertEquals(first * second, Double.parseDouble(Services.calc(first, "*", second)));
-        }
+    void calcDivisionByZeroTest() {
+        assertEquals("Division by zero!", Services.calc(5, "/", 0));
     }
 
     @org.junit.jupiter.api.Test
-    void calcDivTest() {
-        double first, second;
-        double max = 100000;
-        double min = 1;
-        for (int i = 0; i < 100000; i++) {
-            first = (Math.random() * ((max - min) + 1)) + min;
-            second = (Math.random() * ((max - min) + 1)) + min;
-            assertEquals(first / second, Double.parseDouble(Services.calc(first, "/", second)));
-        }
+    void calcWrongFormatTest() {
+        assertEquals("Input has wrong format!", Services.calc(6, "wrong_format", 12));
     }
 
     @org.junit.jupiter.api.Test
